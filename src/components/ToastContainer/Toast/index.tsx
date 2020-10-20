@@ -14,11 +14,13 @@ interface ToastProps {
   message: ToastMessages;
   style: object;
 }
+
 const icons = {
   info: <FiInfo size={24} />,
   success: <FiCheckCircle size={24} />,
   error: <FiAlertCircle size={24} />,
 };
+
 const Toast: React.FC<ToastProps> = ({ message, style }) => {
   const { removeToast } = useToast();
 
@@ -34,7 +36,7 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
   return (
     <Container
       type={message.type || 'info'}
-      hasdescription={!!message.description}
+      hasdescription={Number(!!message.description)}
       style={style}
     >
       {icons[message.type || 'info']}
